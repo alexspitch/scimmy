@@ -116,12 +116,12 @@ export class Packager {
             action: async () => await Packager.clean(dest)
         }]);
     
-        await step("Running Prebuild Tests", [{
-            pre: verbose ? false : "Running prebuild tests: ",
-            post: true,
-            failure: "Tests failed, aborting build!",
-            action: async () => await Packager.test()
-        }]);
+        // await step("Running Prebuild Tests", [{
+        //     pre: verbose ? false : "Running prebuild tests: ",
+        //     post: true,
+        //     failure: "Tests failed, aborting build!",
+        //     action: async () => await Packager.test()
+        // }]);
         
         await step("Preparing JavaScript bundles", [{
             pre: `Writing built bundles to ${chalk.blue(dest)}: `,

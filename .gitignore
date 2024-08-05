@@ -13,6 +13,7 @@ dist
 docs
 test/results-report.json
 *.local
+.history
 
 # Editor directories and files
 .vscode/*

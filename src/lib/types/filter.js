@@ -43,7 +43,7 @@ const patterns = new RegExp(`^(?:${lexicon.map(({source}) => source).join("|")})
 // Split a path by fullstops when they aren't in a filter group or decimal
 const pathSeparator = /(?<![^\w]\d)\.(?!\d[^\w]|[^[]*])/g;
 // Extract attributes and filter strings from path parts
-const multiValuedFilter = /^(.+?)(\[(?:.*?)])?$/;
+const multiValuedFilter = /^(.+?)\s*(\[(?:.*?)])?$/;
 // Match ISO 8601 formatted datetime stamps in strings
 const isoDate = /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])(T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[01][0-9]):[0-5][0-9])?)?$/;
 

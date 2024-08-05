@@ -14,7 +14,7 @@ const validOps = ["add", "remove", "replace"];
 // Split a path by fullstops when they aren't in a filter group or decimal
 const pathSeparator = /(?<![^\w]\d)\.(?!\d[^\w]|[^[]*])/g;
 // Extract attributes and filter strings from path parts
-const multiValuedFilter = /^(.+?)(\[(?:.*?)])?$/g;
+const multiValuedFilter = /^(.+?)\s*(\[(?:.*?)])?$/g;
 
 /**
  * Deeply compare two objects, arrays, or primitive values to see if there are any differences 
@@ -223,7 +223,9 @@ export class PatchOp {
         while (paths.length > 0) {
             // Work out if path contains a filter expression
             const path = paths.shift();
-            const [, key = path, filter] = multiValuedFilter.exec(path) ?? [];
+            let [, key = path, filter] = multiValuedFilter.exec(path) ?? [];
+            // remove surronding spaces
+            key = key.trim();
             
             // We have arrived at our destination
             if (paths.length === 0) {
